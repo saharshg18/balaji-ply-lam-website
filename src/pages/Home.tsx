@@ -17,7 +17,7 @@ function HomeHero() {
       <div className="home-hero-shade" />
       <div className="container home-hero-inner">
         <motion.div className="hero-copy" initial={{ opacity: 0, y: reduced ? 0 : 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : 0.9, delay: reduced ? 0 : 0.15 }}>
-          <Eyebrow>Interior materials. Bhowanipore, Kolkata.</Eyebrow>
+         <Eyebrow>Plywood & laminate shop in Kolkata. Bhawanipore.</Eyebrow>
           <h1 id="home-title">Balaji<br />Ply <em>&amp;</em> Lam</h1>
           <p className="hero-tagline">Where great interiors begin.</p>
           <p className="hero-description">Premium plywood, laminates and interior materials.<br className="desktop-break" /> Considered choices for the spaces you imagine.</p>
