@@ -176,7 +176,7 @@ const reasons = [
 function WhyChoose() {
   return (
     <section className="section why-section" aria-labelledby="why-title">
-      <div className="container why-grid"><Reveal className="why-heading"><Eyebrow>The Balaji difference</Eyebrow><h2 id="why-title">Good materials.<br /><em>Even better peace <br />of mind.</em></h2><p>Choosing materials should feel inspiring, not overwhelming. We're here to make it a little easier.</p></Reveal><div className="reasons-list">{reasons.map((reason, index) => <Reveal className="reason-row" key={reason.title} delay={index * 0.035}><span className="reason-number">0{index + 1}</span><div><h3>{reason.title}</h3><p>{reason.text}</p></div></Reveal>)}</div></div>
+      <div className="container why-grid"><Reveal className="why-heading"><Eyebrow>Your trusted plywood & laminate destination in Kolkata</Eyebrow><h2 id="why-title">Quality plywood, laminates & interior materials.<br /><em>One trusted destination <br />in Kolkata.</em></h2><p>Looking for a trusted plywood shop in Kolkata? Explore quality plywood, laminates and interior materials with expert guidance for homes, offices and commercial spaces.</p></Reveal><div className="reasons-list">{reasons.map((reason, index) => <Reveal className="reason-row" key={reason.title} delay={index * 0.035}><span className="reason-number">0{index + 1}</span><div><h3>{reason.title}</h3><p>{reason.text}</p></div></Reveal>)}</div></div>
     </section>
   );
 }
