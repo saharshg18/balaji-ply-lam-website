@@ -152,35 +152,43 @@ export const materials: Material[] = [
 export const faqs = [
   {
     question: 'Where can I find a plywood shop near me in Kolkata?',
-    answer: 'If you are looking for a plywood shop near you in Kolkata, visit Balaji Ply & Lam in Bhowanipore. We offer plywood, laminates and interior materials for homes, offices and commercial projects. Contact us before visiting to discuss the materials you need and confirm current availability.',
+    answer: 'If you are searching for a plywood shop near me in Kolkata, visit Balaji Ply & Lam in Bhowanipore. We are a Kolkata plywood shop offering plywood, decorative laminates and interior materials for furniture, homes, offices and commercial projects. Contact us before visiting to discuss your requirements and confirm current availability.',
   },
   {
-    question: 'What types of plywood can I enquire about?',
-    answer: 'You can ask us about commercial and MR plywood, BWR-grade plywood, and marine/BWP options. The right choice depends on how and where the plywood will be used. Call or WhatsApp us to confirm current grades, brands, thicknesses and availability.',
+    question: 'Which is a reliable plywood shop in Kolkata?',
+    answer: 'Balaji Ply & Lam is a plywood shop in Kolkata located in Bhowanipore, serving homeowners, carpenters, architects, interior designers and contractors. Visit our store to explore plywood, laminates and interior materials for furniture and residential or commercial interior projects.',
   },
   {
-    question: 'How do I choose plywood for furniture?',
-    answer: 'Start with the furniture’s purpose, expected load, exposure to moisture and the finish you want. Wardrobes in dry rooms and kitchen cabinets may need different specifications. Bring your measurements or speak with your carpenter, and we can help you explore suitable grades and thicknesses.',
+    question: 'Where can I find a plywood dealer near me?',
+    answer: 'If you are looking for a plywood dealer near you in Kolkata, Balaji Ply & Lam is conveniently located on Sarat Bose Road in Bhowanipore. You can enquire about different plywood options, grades, thicknesses and applications and get guidance in selecting suitable materials for your project.',
   },
   {
-    question: 'Do you have waterproof plywood?',
-    answer: 'Ask us about BWR and marine/BWP plywood options for applications where moisture resistance matters. BWR means boiling water resistant; it is not the same specification as marine/BWP plywood. Please confirm the exact grade, certification and current availability for your project with our team.',
+    question: 'Are you a plywood dealer in Kolkata?',
+    answer: 'Yes. Balaji Ply & Lam is a plywood and interior materials destination in Kolkata where customers can enquire about plywood for furniture, wardrobes, cabinets, kitchens and other applications. We also offer decorative laminates and other interior materials, making it convenient to explore multiple material options in one place.',
   },
   {
-    question: 'What types of laminates do you offer?',
-    answer: 'Explore decorative laminates in woodgrain, solid colour, matte, glossy and textured finishes. They can be used on suitable furniture, wardrobes, cabinets and interior surfaces. Visit our Bhowanipore plywood and laminate store to compare available colours and finishes in person.',
+    question: 'Where can I buy quality plywood in Kolkata?',
+    answer: 'You can visit Balaji Ply & Lam, a plywood shop in Bhowanipore, Kolkata, to enquire about suitable plywood for furniture, wardrobes, cabinets, kitchens and other interior applications. Our team can help you understand available grades, thicknesses and options based on your project requirements.',
   },
   {
-    question: 'Can architects and interior designers source materials from you?',
-    answer: 'Yes. Balaji Ply & Lam welcomes architects, interior designers and other design professionals sourcing plywood, laminates and interior materials for residential and commercial projects. Share your material palette, specifications or reference images on WhatsApp so we can discuss suitable options across our range.',
+    question: 'What types of plywood are available at your plywood shop in Kolkata?',
+    answer: 'You can enquire about commercial and MR plywood, BWR-grade plywood and marine or BWP plywood options. The right plywood depends on factors such as furniture application, moisture exposure, required strength and thickness. Contact our Kolkata plywood store to confirm currently available grades, brands and sizes.',
   },
   {
-    question: 'Where is your plywood and laminate store located in Kolkata?',
-    answer: 'Visit Balaji Ply & Lam at 63/1/1A, Sarat Bose Road, Bhowanipore, Kolkata, West Bengal 700025. Our store is conveniently located for customers looking for plywood and laminates in Bhowanipore, South Kolkata and nearby areas. Use the Get Directions link to plan your route in Google Maps.',
+    question: 'How do I choose the right plywood from a plywood dealer in Kolkata?',
+    answer: 'The right plywood depends on where and how it will be used. Furniture application, expected load, exposure to moisture, required thickness and budget should all be considered. Whether you are making wardrobes, beds, cabinets or kitchen furniture, Balaji Ply & Lam can help you explore suitable plywood options for your project.',
   },
   {
-    question: 'How can I contact Balaji Ply & Lam?',
-    answer: 'Call or WhatsApp us on +91 9339742083. You can also email balajiplyamit@yahoo.in or visit our store on Sarat Bose Road in Bhowanipore. Product-specific WhatsApp buttons on our Products page make it easy to start a conversation about the material you need.',
+    question: 'Do you have waterproof and moisture-resistant plywood in Kolkata?',
+    answer: 'You can enquire about BWR and marine or BWP plywood options for applications where moisture resistance is important. These plywood grades have different specifications, so the right choice depends on your project. Contact our team to discuss your requirements and confirm current availability.',
+  },
+  {
+    question: 'Do you supply plywood to architects and interior designers in Kolkata?',
+    answer: 'Yes. Balaji Ply & Lam works with architects, interior designers, contractors and other professionals looking for plywood, laminates and interior materials in Kolkata. You can share your specifications, material requirements or reference images to discuss suitable options for residential and commercial projects.',
+  },
+  {
+    question: 'Where is your plywood shop and dealer located in Kolkata?',
+    answer: 'Balaji Ply & Lam is located at 63/1/1A, Sarat Bose Road, Bhowanipore, Kolkata, West Bengal 700025. Our plywood shop is conveniently located for customers across Kolkata, particularly Bhowanipore and South Kolkata. Call or WhatsApp us before visiting for product enquiries and current availability.',
   },
 ];
 
