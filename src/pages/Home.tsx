@@ -155,10 +155,22 @@ function ProjectShowcase() {
 }
 
 const reasons = [
-  { title: 'More choice. Less running around.', text: 'Plywood, decorative surfaces and finishing essentials, brought together to make material sourcing simpler.' },
-  { title: 'Quality you can choose with confidence.', text: 'Genuine products and a focus on the right specifications, so your choices are grounded in what your project needs.' },
-  { title: 'Guidance, not guesswork.', text: 'Helpful conversations about grades, finishes and applications, whether it is your first renovation or your next client project.' },
-  { title: 'Considered options. Fair value.', text: 'A range of choices for different styles, requirements and budgets, with clear, competitive pricing when you enquire.' },
+  {
+    title: 'More materials. One trusted destination.',
+    text: 'Explore quality plywood, laminates, decorative surfaces and interior materials for homes, offices and commercial spaces across Kolkata.'
+  },
+  {
+    title: 'Quality you can choose with confidence.',
+    text: 'Choose from reliable plywood and laminate options with the right specifications, finishes and materials for your project.'
+  },
+  {
+    title: 'Guidance for every project.',
+    text: 'Get practical assistance in choosing plywood, laminates and interior materials based on your design, requirements and budget.'
+  },
+  {
+    title: 'Considered options. Fair value.',
+    text: 'Explore materials across different styles and price points to find the right plywood, laminates and interior finishes for your space.'
+  },
 ];
 
 function WhyChoose() {
