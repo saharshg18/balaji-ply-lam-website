@@ -195,7 +195,7 @@ function MaterialsAsDesign() {
     <section className="materials-editorial" aria-labelledby="details-title">
       <img src="/images/louvers.jpg" alt="A close study of walnut grain, vertical fluting and the way warm light moves across a decorative surface" width="800" height="1000" loading="lazy" decoding="async" />
       <div className="editorial-shade" />
-      <Reveal className="container editorial-copy"><Eyebrow>Materials, as design</Eyebrow><h2 id="details-title">It's all in<br /><em>the details.</em></h2><p>The warmth of a grain. The feel of a finish.<br />The little things that make a space your own.</p><TextLink to="/products" className="light-link">Discover your material palette</TextLink></Reveal>
+     <Reveal className="container editorial-copy"><Eyebrow>Quality plywood, laminates & interior materials</Eyebrow><h2 id="details-title">The right materials.<br /><em>The perfect finish.</em></h2><p>From the warmth of natural wood to the perfect laminate finish,<br />discover quality plywood, laminates and interior materials for every space in Kolkata.</p><TextLink to="/products" className="light-link">Explore our plywood & laminate collection</TextLink></Reveal>
     </section>
   );
 }
