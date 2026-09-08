@@ -1,48 +1,63 @@
 import { useEffect } from 'react';
 import { business, faqs, googleMapsUrl, materials } from '../data/site';
 
-const SITE_URL = 'https://www.balajiplyandlam.in';
-
 const pageMetadata = {
   home: {
     path: '/',
     title: 'Best Plywood & Laminate Shop in Kolkata | Balaji Ply & Lam',
     description:
-      'Looking for quality plywood, laminates and interior materials in Kolkata? Visit Balaji Ply & Lam in Bhowanipore for plywood, laminates, louvers, decorative panels and more.',
+      'Looking for a plywood shop near you in Kolkata? Balaji Ply & Lam offers plywood, laminates and interior materials, including CenturyPly and Greenply, in Bhowanipore.',
+    ogTitle:
+      'Best Plywood & Laminate Shop in Kolkata | Balaji Ply & Lam',
+    ogDescription:
+      'Explore plywood, laminates and decorative interior materials at Balaji Ply & Lam in Bhowanipore, Kolkata, including trusted brands such as CenturyPly and Greenply.',
     name: 'Home',
     image: '/images/hero-interior.jpg',
   },
 
   products: {
     path: '/products',
-    title: 'Plywood, Laminates & Decorative Panels in Kolkata | Balaji Ply & Lam',
+    title:
+      'Plywood Dealers in Kolkata | Laminates & Interior Materials',
     description:
-      'Explore plywood, laminates, louvers, charcoal sheets, HDF panels and decorative interior materials at Balaji Ply & Lam in Bhowanipore, Kolkata.',
+      'Explore plywood, including CenturyPly and Greenply, plus laminates, louvers, charcoal sheets, HDF panels and decorative interior materials at Balaji Ply & Lam in Kolkata.',
+    ogTitle:
+      'Plywood, Laminates & Interior Materials in Kolkata | Balaji Ply & Lam',
+    ogDescription:
+      'Explore plywood, CenturyPly, Greenply, laminates, louvers, charcoal sheets, HDF panels and decorative interior materials in Kolkata.',
     name: 'Products',
     image: '/images/material-palette.jpg',
   },
 
   about: {
     path: '/about-us',
-    title: 'About Balaji Ply & Lam | Plywood & Interior Materials in Kolkata',
+    title:
+      "About Balaji Ply & Lam | Kolkata's Trusted Plywood Store",
     description:
-      'Visit Balaji Ply & Lam in Bhowanipore, Kolkata for plywood, laminates and decorative interior materials. Find us at 63/1/1A Sarat Bose Road, Kolkata 700025.',
+      "Balaji Ply & Lam has served Kolkata's plywood and laminate needs for 25+ years from our Bhowanipore store, offering trusted brands including CenturyPly and Greenply.",
+    ogTitle:
+      'About Balaji Ply & Lam | 25+ Years in Kolkata',
+    ogDescription:
+      "Discover Balaji Ply & Lam, serving Kolkata's plywood and laminate needs for over 25 years from our Bhowanipore store.",
     name: 'About Us',
     image: '/images/design-studio.jpg',
   },
 };
 
-export function SEO({ page }: { page: keyof typeof pageMetadata }) {
+export function SEO({
+  page,
+}: {
+  page: keyof typeof pageMetadata;
+}) {
   useEffect(() => {
     const meta = pageMetadata[page];
+    const origin = window.location.origin;
+    const url = `${origin}${meta.path}`;
 
-    const url =
-      meta.path === '/'
-        ? `${SITE_URL}/`
-        : `${SITE_URL}${meta.path}`;
-
+    // Page title
     document.title = meta.title;
 
+    // Reuse existing tags instead of creating duplicates
     const setMeta = (
       key: string,
       content: string,
@@ -63,35 +78,31 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
       element.content = content;
     };
 
-    /* Primary SEO */
-
+    // Standard SEO
     setMeta('description', meta.description);
-    setMeta('robots', 'index, follow');
 
-    /* Open Graph */
-
-    setMeta('og:title', meta.title, true);
-    setMeta('og:description', meta.description, true);
+    // Open Graph
+    setMeta('og:title', meta.ogTitle, true);
+    setMeta('og:description', meta.ogDescription, true);
     setMeta('og:type', 'website', true);
     setMeta('og:url', url, true);
     setMeta('og:site_name', business.name, true);
     setMeta('og:locale', 'en_IN', true);
-    setMeta('og:image', `${SITE_URL}${meta.image}`, true);
+    setMeta('og:image', `${origin}${meta.image}`, true);
+
     setMeta(
       'og:image:alt',
-      'Interior materials and decorative surfaces from Balaji Ply & Lam',
+      'Plywood, laminates and decorative interior materials from Balaji Ply & Lam in Kolkata',
       true
     );
 
-    /* Twitter */
-
+    // Twitter / X
     setMeta('twitter:card', 'summary_large_image');
-    setMeta('twitter:title', meta.title);
-    setMeta('twitter:description', meta.description);
-    setMeta('twitter:image', `${SITE_URL}${meta.image}`);
+    setMeta('twitter:title', meta.ogTitle);
+    setMeta('twitter:description', meta.ogDescription);
+    setMeta('twitter:image', `${origin}${meta.image}`);
 
-    /* Canonical */
-
+    // Canonical URL
     let canonical = document.head.querySelector<HTMLLinkElement>(
       'link[rel="canonical"]'
     );
@@ -104,9 +115,8 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
 
     canonical.href = url;
 
-    /* Structured Data */
-
-    const businessId = `${SITE_URL}/#business`;
+    // Structured Data
+    const businessId = `${origin}/#business`;
 
     const graph: Record<string, unknown>[] = [
       {
@@ -115,18 +125,18 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
 
         name: business.name,
 
-        url: `${SITE_URL}/`,
+        url: `${origin}/`,
 
         description:
-          'Plywood, laminates and decorative interior materials for homeowners, architects and interior designers in Kolkata.',
+          'Plywood, laminates and decorative interior materials for homeowners, architects and interior professionals in Bhowanipore, Kolkata.',
 
         telephone: business.phone,
 
         email: business.email,
 
-        logo: `${SITE_URL}/favicon.svg`,
+        logo: `${origin}/favicon.svg`,
 
-        image: `${SITE_URL}/images/hero-interior.jpg`,
+        image: `${origin}/images/hero-interior.jpg`,
 
         address: {
           '@type': 'PostalAddress',
@@ -153,9 +163,9 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
       {
         '@type': 'WebSite',
 
-        '@id': `${SITE_URL}/#website`,
+        '@id': `${origin}/#website`,
 
-        url: `${SITE_URL}/`,
+        url: `${origin}/`,
 
         name: business.name,
 
@@ -178,7 +188,7 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
         description: meta.description,
 
         isPartOf: {
-          '@id': `${SITE_URL}/#website`,
+          '@id': `${origin}/#website`,
         },
 
         about: {
@@ -189,8 +199,7 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
       },
     ];
 
-    /* Breadcrumb Schema */
-
+    // Breadcrumbs
     if (page !== 'home') {
       graph.push({
         '@type': 'BreadcrumbList',
@@ -200,7 +209,7 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: `${SITE_URL}/`,
+            item: `${origin}/`,
           },
 
           {
@@ -213,13 +222,12 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
       });
     }
 
-    /* FAQ Schema */
-
+    // Homepage FAQs
     if (page === 'home') {
       graph.push({
         '@type': 'FAQPage',
 
-        '@id': `${SITE_URL}/#faqs`,
+        '@id': `${origin}/#faqs`,
 
         mainEntity: faqs.map((faq) => ({
           '@type': 'Question',
@@ -234,32 +242,33 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
       });
     }
 
-    /* Products Schema */
-
+    // Products structured data
     if (page === 'products') {
       graph.push({
         '@type': 'ItemList',
 
-        name: 'Interior Material Categories',
+        name: 'Interior material categories',
 
-        itemListElement: materials.map((material, index) => ({
-          '@type': 'ListItem',
+        itemListElement: materials.map(
+          (material, index) => ({
+            '@type': 'ListItem',
 
-          position: index + 1,
+            position: index + 1,
 
-          name: material.name,
+            name: material.name,
 
-          url: `${url}#${material.id}`,
-        })),
+            url: `${url}#${material.id}`,
+          })
+        ),
       });
 
-      materials.forEach((material) => {
+      materials.forEach((material) =>
         graph.push({
           '@type': 'Service',
 
           '@id': `${url}#${material.id}-service`,
 
-          name: `${material.name} in Kolkata`,
+          name: `${material.name} sourcing in Kolkata`,
 
           serviceType: `${material.name} supply and material selection`,
 
@@ -267,7 +276,7 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
 
           url: `${url}#${material.id}`,
 
-          image: `${SITE_URL}${material.image}`,
+          image: `${origin}${material.image}`,
 
           provider: {
             '@id': businessId,
@@ -277,10 +286,11 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
             '@type': 'City',
             name: 'Kolkata',
           },
-        });
-      });
+        })
+      );
     }
 
+    // Structured data script
     let schema = document.getElementById(
       'site-structured-data'
     ) as HTMLScriptElement | null;
@@ -297,7 +307,6 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
 
     schema.textContent = JSON.stringify({
       '@context': 'https://schema.org',
-
       '@graph': graph,
     });
   }, [page]);
