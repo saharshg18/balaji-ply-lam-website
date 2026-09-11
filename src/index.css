@@ -989,3 +989,77 @@ main:focus { outline: none; }
     transition: none;
   }
 }
+/* ============================================================
+   FINAL HEADER TYPOGRAPHY
+   Keep every desktop navigation item visually consistent.
+   ============================================================ */
+
+.desktop-nav > a,
+.desktop-nav > .nav-dropdown > .nav-dropdown-trigger {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #6d6f63;
+  text-decoration: none;
+}
+
+.desktop-nav > a {
+  position: relative;
+  padding-block: 17px;
+  white-space: nowrap;
+}
+
+.desktop-nav > .nav-dropdown > .nav-dropdown-trigger {
+  position: relative;
+  padding-block: 17px;
+}
+
+.desktop-nav > a:hover,
+.desktop-nav > a.active,
+.desktop-nav > .nav-dropdown > .nav-dropdown-trigger:hover,
+.desktop-nav > .nav-dropdown:focus-within > .nav-dropdown-trigger {
+  color: #32382c;
+}
+
+.desktop-nav > .nav-dropdown > .nav-dropdown-trigger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 17px;
+  bottom: 8px;
+  height: 1px;
+  background: #7f6d4b;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.desktop-nav > .nav-dropdown:hover > .nav-dropdown-trigger::after,
+.desktop-nav > .nav-dropdown:focus-within > .nav-dropdown-trigger::after {
+  transform: scaleX(1);
+}
+
+.desktop-nav > .nav-dropdown > .nav-dropdown-trigger svg {
+  width: 13px;
+  height: 13px;
+  color: currentColor;
+}
+
+/* Keep header utility text in the same visual family */
+.header-phone,
+.header-directions {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.header-whatsapp {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 500;
+}
