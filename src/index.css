@@ -1063,3 +1063,387 @@ main:focus { outline: none; }
   line-height: 1.4;
   font-weight: 500;
 }
+/* ============================================================
+   PLYWOOD CATEGORY PAGE
+   Compact editorial product layout
+   ============================================================ */
+
+.compact-product-section {
+  padding-top: 82px;
+  padding-bottom: 70px;
+}
+
+.grade-list {
+  margin-top: 58px;
+  border-top: 1px solid var(--line);
+}
+
+.grade-row {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1.15fr) minmax(260px, .8fr) 24px;
+  align-items: center;
+  column-gap: 38px;
+  min-height: 175px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.grade-number {
+  align-self: start;
+  padding-top: 5px;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 1.5px;
+  color: var(--brass);
+}
+
+.grade-main h3 {
+  margin: 0 0 9px;
+  font-family: var(--display);
+  font-size: clamp(29px, 2.7vw, 42px);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -.7px;
+  color: var(--ink);
+}
+
+.grade-main p {
+  max-width: 570px;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.75;
+}
+
+.grade-application {
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+
+.grade-application span {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 9px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #8a806d;
+}
+
+.grade-application p {
+  max-width: 330px;
+  color: #65645b;
+  font-size: 11.5px;
+  line-height: 1.7;
+}
+
+.grade-arrow {
+  color: #8d806a;
+  transition: transform .25s ease, color .25s ease;
+}
+
+.grade-row:hover .grade-arrow {
+  transform: translate(3px, -3px);
+  color: var(--brass);
+}
+
+.section-note {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 650px);
+  gap: 30px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.section-note > span {
+  font-size: 9px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.section-note p {
+  color: #7b776c;
+  font-size: 10.5px;
+  line-height: 1.75;
+}
+
+
+/* ENGINEERED BOARDS */
+
+.compact-material-section {
+  padding-block: 88px;
+  background: var(--warm);
+}
+
+.compact-material-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1fr);
+  gap: clamp(55px, 8vw, 115px);
+  align-items: center;
+}
+
+.compact-material-image {
+  position: relative;
+  height: min(490px, 38vw);
+  min-height: 390px;
+}
+
+.compact-material-image img {
+  width: 100%;
+  height: calc(100% - 24px);
+  object-fit: cover;
+}
+
+.compact-material-copy {
+  max-width: 620px;
+}
+
+.compact-material-copy h2 {
+  max-width: 580px;
+}
+
+.compact-material-copy .product-description {
+  max-width: 570px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.board-list {
+  margin: 30px 0 20px;
+  border-top: 1px solid var(--line);
+}
+
+.board-list-row {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 20px;
+  gap: 20px;
+  align-items: center;
+  padding: 19px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.board-list-row > span {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  color: var(--brass);
+}
+
+.board-list-row h3 {
+  margin-bottom: 5px;
+  font-family: var(--display);
+  font-size: 25px;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.board-list-row p {
+  max-width: 510px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.board-list-row > svg {
+  color: #8d806a;
+}
+
+
+/* APPLICATIONS */
+
+.applications-section {
+  padding-block: 92px;
+}
+
+.applications-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
+  gap: clamp(60px, 9vw, 140px);
+  align-items: start;
+}
+
+.applications-grid > div:first-child {
+  max-width: 500px;
+}
+
+.applications-grid > div:first-child > p {
+  max-width: 440px;
+  margin-top: 25px;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.85;
+}
+
+.applications-grid .button-group {
+  margin-top: 22px;
+}
+
+.application-list {
+  border-top: 1px solid var(--line);
+}
+
+.application-list-item {
+  display: grid;
+  grid-template-columns: 45px minmax(0, 1fr) 20px;
+  gap: 22px;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.application-list-item > span {
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  color: var(--brass);
+}
+
+.application-list-item strong {
+  display: block;
+  margin-bottom: 5px;
+  font-family: var(--display);
+  font-size: 25px;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.application-list-item p {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.application-list-item > svg {
+  color: #8d806a;
+}
+
+
+/* PLYWOOD PAGE TYPOGRAPHY */
+
+.plywood-hero .inner-hero-description {
+  max-width: 500px;
+}
+
+.plywood-hero .hero-buttons {
+  margin-top: 26px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .grade-row {
+    grid-template-columns: 42px minmax(0, 1fr) 20px;
+    gap: 18px;
+    min-height: 0;
+    padding: 25px 0;
+  }
+
+  .grade-application {
+    grid-column: 2 / 3;
+    padding-left: 0;
+    padding-top: 13px;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .grade-arrow {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .compact-material-grid,
+  .applications-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .compact-material-image {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .applications-grid > div:first-child {
+    max-width: 600px;
+  }
+
+  .section-note {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .compact-product-section {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+
+  .grade-list {
+    margin-top: 38px;
+  }
+
+  .grade-row {
+    grid-template-columns: 32px minmax(0, 1fr) 18px;
+    column-gap: 12px;
+    padding: 22px 0;
+  }
+
+  .grade-number {
+    font-size: 8px;
+  }
+
+  .grade-main h3 {
+    font-size: 29px;
+  }
+
+  .grade-main p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .grade-application {
+    padding-top: 12px;
+  }
+
+  .grade-application span {
+    font-size: 8px;
+  }
+
+  .grade-application p {
+    font-size: 10.5px;
+    line-height: 1.65;
+  }
+
+  .compact-material-section,
+  .applications-section {
+    padding-block: 62px;
+  }
+
+  .board-list-row {
+    grid-template-columns: 28px minmax(0, 1fr) 18px;
+    gap: 13px;
+    padding: 17px 0;
+  }
+
+  .board-list-row h3,
+  .application-list-item strong {
+    font-size: 22px;
+  }
+
+  .application-list-item {
+    grid-template-columns: 32px minmax(0, 1fr) 18px;
+    gap: 13px;
+    padding: 18px 0;
+  }
+
+  .application-list-item p {
+    font-size: 10.5px;
+  }
+}
