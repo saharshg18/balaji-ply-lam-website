@@ -1,5 +1,6 @@
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import { SEO } from '../components/SEO';
 import {
@@ -11,549 +12,545 @@ import {
 } from '../components/ui';
 import { brands, messages } from '../data/site';
 
-const plywoodGrades = [
+const gradeItems = [
   {
+    id: 'mr',
     number: '01',
-    name: 'MR Plywood',
+    name: 'MR Grade Plywood',
+    shortName: 'MR',
+    image: '/images/grades/mr.jpg',
+    fallback: '/images/plywood.jpg',
     description:
-      'A practical plywood option for dry interior applications where everyday strength and stability are required.',
-    applications:
-      'Wardrobes, bedroom furniture, shelving and general interior work.',
+      'MR plywood is suited to interior areas where moisture exposure is limited, making it a practical choice for furniture, wardrobes and general interior work.',
+    applications: 'Furniture • Wardrobes • Interior furniture',
   },
   {
+    id: 'bwr',
     number: '02',
-    name: 'BWR Plywood',
+    name: 'BWR Grade Plywood',
+    shortName: 'BWR',
+    image: '/images/grades/bwr.jpg',
+    fallback: '/images/plywood.jpg',
     description:
-      'A moisture-resistant plywood option for applications where occasional exposure to moisture needs to be considered.',
-    applications:
-      'Kitchens, utility areas and furniture exposed to occasional moisture.',
+      'BWR plywood offers improved resistance to moisture and is commonly considered for areas such as kitchens, utility spaces and interiors with occasional moisture exposure.',
+    applications: 'Kitchens • Utility areas • Interior furniture',
   },
   {
+    id: 'bwp',
     number: '03',
-    name: 'BWP / Marine Plywood',
+    name: 'BWP / Marine Grade Plywood',
+    shortName: 'BWP',
+    image: '/images/grades/bwp.jpg',
+    fallback: '/images/plywood.jpg',
     description:
-      'A higher moisture-resistance option for applications where moisture exposure is an important consideration.',
-    applications:
-      'Kitchens, moisture-prone areas and demanding interior applications.',
-  },
-];
-
-const boardTypes = [
-  {
-    number: '01',
-    name: 'MDF',
-    description:
-      'A smooth engineered wood-fibre board used for suitable furniture, decorative and interior applications.',
-  },
-  {
-    number: '02',
-    name: 'HDF / HDMR',
-    description:
-      'Denser engineered boards that can be suitable where a smooth and stable substrate is required.',
+      'BWP plywood is designed for demanding environments where higher moisture resistance is important, including kitchens and areas exposed to regular moisture.',
+    applications: 'Kitchens • Wet-prone interiors • Premium furniture',
   },
 ];
 
 const applications = [
   {
+    id: 'homes',
     number: '01',
-    title: 'Kitchen',
+    title: 'Homes & interiors',
+    image: '/images/hero-interior.jpg',
     description:
-      'Consider moisture exposure, construction and the plywood specification required for the kitchen.',
+      'Plywood for wardrobes, storage, furniture, wall features and other residential interiors where material selection matters.',
   },
   {
+    id: 'kitchens',
     number: '02',
-    title: 'Wardrobe',
+    title: 'Kitchens & wardrobes',
+    image: '/images/plywood.jpg',
     description:
-      'Consider the room environment, thickness, construction and expected load when choosing plywood.',
+      'Explore plywood options for kitchen cabinets, shutters, carcasses and wardrobes based on moisture exposure and intended use.',
   },
   {
+    id: 'architects',
     number: '03',
-    title: 'Furniture',
+    title: 'Architect & design projects',
+    image: '/images/design-studio.jpg',
     description:
-      'Beds, shelving, storage and other furniture can require different board specifications.',
+      'Material options for architects, interior designers and contractors working across residential and commercial projects.',
   },
   {
+    id: 'furniture',
     number: '04',
-    title: 'Commercial',
+    title: 'Furniture & carpentry',
+    image: '/images/material-palette.jpg',
     description:
-      'Office and commercial interiors may require material choices based on usage and project requirements.',
+      'Boards for furniture making, carpentry and custom interior work, with options across different grades and applications.',
+  },
+  {
+    id: 'commercial',
+    number: '05',
+    title: 'Commercial spaces',
+    image: '/images/laminates.jpg',
+    description:
+      'Plywood and boards for offices, retail spaces, hospitality interiors and other commercial applications.',
   },
 ];
 
-const faqs = [
+const brandLogos = [
   {
-    question:
-      'What is the best plywood for a kitchen in Kolkata?',
-    answer:
-      'The best plywood for a kitchen depends on moisture exposure, construction, thickness and the requirements of the project. Moisture-resistant BWR or BWP options may be considered where moisture is an important factor. The exact specification should be confirmed for the application.',
+    name: 'CenturyPly',
+    image: 'https://img.logokit.com/centuryply.com',
+    href: '/brands/centuryply/',
   },
   {
-    question:
-      'How do I choose between MR, BWR and BWP plywood in Kolkata?',
-    answer:
-      'MR, BWR and BWP plywood are suited to different moisture-exposure requirements. MR can be suitable for many dry interior applications, while BWR and BWP can be considered where greater moisture resistance is required.',
+    name: 'Greenply',
+    image: 'https://img.logokit.com/greenply.com',
+    href: '/brands/',
   },
   {
-    question:
-      'Where can I find plywood dealers in Kolkata?',
-    answer:
-      'Balaji Ply & Lam is a plywood and interior-materials store in Bhowanipore, Kolkata. You can visit the store to explore available plywood, boards and brands, or contact us for the current catalogue and availability.',
+    name: 'Greenlam',
+    image: 'https://img.logokit.com/greenlamindustries.com',
+    href: '/brands/',
   },
   {
-    question:
-      'How can I find a plywood shop near me in Kolkata?',
-    answer:
-      'When looking for a plywood shop near you in Kolkata, consider the location, available brands, product range and whether the store can help you compare specifications. Balaji Ply & Lam is located on Sarat Bose Road in Bhowanipore.',
+    name: 'Merino',
+    image: 'https://img.logokit.com/merinoindia.com',
+    href: '/brands/',
   },
   {
-    question:
-      'What is the plywood price in Kolkata?',
-    answer:
-      'Plywood price in Kolkata varies according to the brand, grade, thickness and exact product specification. Current prices can change, so it is best to check the price for the specific plywood product you need.',
+    name: 'Royale Touche',
+    image: 'https://img.logokit.com/royaletouche.com',
+    href: '/brands/',
   },
   {
-    question:
-      'Which plywood is suitable for wardrobes and furniture?',
-    answer:
-      'The suitable plywood depends on the room environment, furniture construction, required thickness, expected load and budget. For indoor furniture and wardrobes, choose the specification according to the particular application.',
+    name: 'Austin',
+    image: 'https://img.logokit.com/austinply.com',
+    href: '/brands/',
   },
 ];
 
 export function PlywoodPage() {
+  const [activeApplication, setActiveApplication] = useState('homes');
+
+  const selectedApplication =
+    applications.find((item) => item.id === activeApplication) ??
+    applications[0];
+
   return (
     <>
       <SEO page="plywood" />
 
-      {/* =====================================================
-          HERO
-          ===================================================== */}
-      <InnerHero
-        image="/images/plywood.jpg"
-        alt="Plywood sheets and wood-based interior materials"
-        eyebrow="Plywood & Boards / Kolkata"
-        title={
-          <>
-            Plywood &amp; Boards
-            <br />
-            <em>in Kolkata.</em>
-          </>
-        }
-        className="plywood-hero"
-      >
-        <p className="inner-hero-description">
-          Looking for plywood in Kolkata? Balaji Ply &amp; Lam is a
-          plywood shop in Bhowanipore offering plywood, MDF and
-          HDF / HDMR boards for kitchens, wardrobes, furniture,
-          offices and interior projects.
-        </p>
-
-        <div className="button-group hero-buttons">
-          <ContactLink
-            kind="whatsapp"
-            message={messages.plywood}
-            variant="light"
-          >
-            Get Plywood Catalogue
-          </ContactLink>
-
-          <Link
-            to="#plywood-grades"
-            className="text-link light-link"
-          >
-            <span>Explore plywood grades</span>
-
-            <ArrowDown
-              size={17}
-              strokeWidth={1.5}
-              aria-hidden="true"
-            />
-          </Link>
-        </div>
-      </InnerHero>
-
-      {/* =====================================================
-          PAGE NAVIGATION
-          ===================================================== */}
-      <div className="collection-navigation">
-        <nav
-          className="container collection-nav"
-          aria-label="Plywood page sections"
+      <main>
+        {/* HERO */}
+        <InnerHero
+          image="/images/plywood.jpg"
+          alt="Plywood sheets and interior materials in Kolkata"
+          eyebrow="PLYWOOD & BOARDS"
+          title="Plywood for every kind of interior."
         >
-          <a href="#plywood-grades">
-            Plywood Grades
-          </a>
+          <p>
+            Explore plywood grades, engineered boards and material options for
+            homes, kitchens, furniture and commercial interiors in Kolkata.
+          </p>
 
-          <a href="#boards">
-            Engineered Boards
-          </a>
-
-          <a href="#applications">
-            Applications
-          </a>
-
-          <a href="#brands">
-            Brands
-          </a>
-
-          <a href="#plywood-faq">
-            FAQs
-          </a>
-        </nav>
-      </div>
-
-      {/* =====================================================
-          INTRODUCTION
-          ===================================================== */}
-      <div className="collection-intro container">
-        <p>
-          The right plywood depends on
-          <br />
-          where you plan to use it.
-        </p>
-
-        <span>
-          MR / BWR / BWP plywood · MDF · HDF / HDMR
-          <br />
-          Compare materials based on application and requirements.
-        </span>
-      </div>
-
-      {/* =====================================================
-          PLYWOOD GRADES
-          ===================================================== */}
-      <section
-        id="plywood-grades"
-        className="section compact-product-section"
-        aria-labelledby="plywood-grades-title"
-      >
-        <div className="container">
-          <Reveal className="section-heading-row">
-            <div>
-              <Eyebrow>Plywood Grades</Eyebrow>
-
-              <h2 id="plywood-grades-title">
-                Understand the
-                <br />
-                <em>main options.</em>
-              </h2>
-            </div>
-
-            <div className="section-heading-aside">
-              <p>
-                Choose according to moisture exposure,
-                <br />
-                application and project requirements.
-              </p>
-
-              <TextLink to="/guides/mr-vs-bwr-vs-bwp-plywood/">
-                Compare plywood grades
-              </TextLink>
-            </div>
-          </Reveal>
-
-          <div className="grade-list">
-            {plywoodGrades.map((grade) => (
-              <Reveal
-                key={grade.name}
-                className="grade-row"
-              >
-                <span className="grade-number">
-                  {grade.number}
-                </span>
-
-                <div className="grade-main">
-                  <h3>{grade.name}</h3>
-
-                  <p>{grade.description}</p>
-                </div>
-
-                <div className="grade-application">
-                  <span>Common applications</span>
-
-                  <p>{grade.applications}</p>
-                </div>
-
-                <ArrowUpRight
-                  className="grade-arrow"
-                  size={20}
-                  strokeWidth={1.4}
-                  aria-hidden="true"
-                />
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="section-note">
-            <span>Important</span>
-
-            <p>
-              Product specifications, certifications, thicknesses
-              and current availability can vary by brand. Confirm
-              the exact specification before purchasing.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          ENGINEERED BOARDS
-          ===================================================== */}
-      <section
-        id="boards"
-        className="section compact-material-section"
-        aria-labelledby="boards-title"
-      >
-        <div className="container compact-material-grid">
-          <Reveal className="compact-material-image">
-            <img
-              src="/images/material-palette.jpg"
-              alt="Interior board and material samples"
-              width="900"
-              height="700"
-              loading="lazy"
-              decoding="async"
-            />
-
-            <span className="product-image-caption">
-              ENGINEERED BOARDS / 04
-            </span>
-          </Reveal>
-
-          <Reveal
-            className="compact-material-copy"
-            delay={0.08}
-          >
-            <Eyebrow>Engineered Boards</Eyebrow>
-
-            <h2 id="boards-title">
-              More than plywood.
-              <br />
-              <em>Explore board options.</em>
-            </h2>
-
-            <p className="product-description">
-              Plywood is not the only board material used in
-              interior work. MDF and HDF / HDMR can be suitable
-              options for selected furniture, decorative and
-              interior applications.
-            </p>
-
-            <div className="board-list">
-              {boardTypes.map((board) => (
-                <div
-                  className="board-list-row"
-                  key={board.name}
-                >
-                  <span>{board.number}</span>
-
-                  <div>
-                    <h3>{board.name}</h3>
-
-                    <p>{board.description}</p>
-                  </div>
-
-                  <ArrowUpRight
-                    size={18}
-                    strokeWidth={1.4}
-                    aria-hidden="true"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <TextLink to="/guides/mdf-vs-hdmr/">
-              Compare MDF &amp; HDMR
-            </TextLink>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* =====================================================
-          APPLICATIONS
-          ===================================================== */}
-      <section
-        id="applications"
-        className="section applications-section"
-        aria-labelledby="applications-title"
-      >
-        <div className="container applications-grid">
-          <Reveal>
-            <Eyebrow>Choosing Plywood</Eyebrow>
-
-            <h2 id="applications-title">
-              Start with
-              <br />
-              <em>the application.</em>
-            </h2>
-
-            <p>
-              Whether you are buying plywood for a kitchen,
-              wardrobe, furniture or commercial interior, start
-              with how and where the material will be used.
-            </p>
-
-            <div className="button-group">
-              <TextLink to="/guides/best-plywood-for-kitchen/">
-                Kitchen plywood guide
-              </TextLink>
-
-              <TextLink to="/guides/best-plywood-for-wardrobe/">
-                Wardrobe plywood guide
-              </TextLink>
-            </div>
-          </Reveal>
-
-          <div className="application-list">
-            {applications.map((application) => (
-              <div
-                className="application-list-item"
-                key={application.title}
-              >
-                <span>{application.number}</span>
-
-                <div>
-                  <strong>{application.title}</strong>
-
-                  <p>{application.description}</p>
-                </div>
-
-                <ArrowUpRight
-                  size={19}
-                  strokeWidth={1.4}
-                  aria-hidden="true"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          BRANDS
-          ===================================================== */}
-      <section
-        id="brands"
-        className="section"
-        aria-labelledby="plywood-brands-title"
-      >
-        <div className="container">
-          <Reveal className="section-heading-row">
-            <div>
-              <Eyebrow>
-                Plywood Brands in Kolkata
-              </Eyebrow>
-
-              <h2 id="plywood-brands-title">
-                Explore brands.
-                <br />
-                <em>Compare your options.</em>
-              </h2>
-            </div>
-
-            <div className="section-heading-aside">
-              <p>
-                Ask us about current plywood brands,
-                <br />
-                specifications and availability.
-              </p>
-
-              <TextLink to="/brands/">
-                View all brands
-              </TextLink>
-            </div>
-          </Reveal>
-
-          <div className="brand-grid">
-            {brands.slice(0, 6).map((brand) => (
-              <Link
-                key={brand.id}
-                to={brand.href}
-                className="brand-card"
-              >
-                <span className="brand-card-name">
-                  {brand.name}
-                </span>
-
-                <span className="brand-card-arrow">
-                  <ArrowUpRight
-                    size={20}
-                    strokeWidth={1.4}
-                    aria-hidden="true"
-                  />
-                </span>
-
-                <p>{brand.description}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          FAQ
-          ===================================================== */}
-      <section
-        id="plywood-faq"
-        className="section faq-section"
-        aria-labelledby="plywood-faq-title"
-      >
-        <div className="container faq-grid">
-          <Reveal>
-            <Eyebrow>Plywood FAQ</Eyebrow>
-
-            <h2 id="plywood-faq-title">
-              Common questions
-              <br />
-              <em>about plywood in Kolkata.</em>
-            </h2>
-
-            <p className="faq-intro">
-              Comparing plywood grades, looking for a plywood
-              shop near you or checking current pricing?
-            </p>
-
+          <div className="inner-hero-actions">
             <ContactLink
               kind="whatsapp"
               message={messages.plywood}
-              variant="text"
+              variant="primary"
             >
-              Ask Us on WhatsApp
+              Get Plywood Options
             </ContactLink>
-          </Reveal>
 
-          <div className="faq-list">
-            {faqs.map((faq, index) => (
-              <div
-                className={`faq-item${
-                  index === 0 ? ' is-open' : ''
-                }`}
-                key={faq.question}
-              >
-                <h3>
-                  <span>{faq.question}</span>
+            <Link to="/contact/" className="button button-secondary">
+              Visit Our Store
+            </Link>
+          </div>
+        </InnerHero>
 
-                  <ArrowUpRight
-                    size={18}
-                    strokeWidth={1.4}
-                    aria-hidden="true"
-                  />
-                </h3>
-
-                <div className="faq-answer">
-                  <p>{faq.answer}</p>
-                </div>
-              </div>
-            ))}
+        {/* PAGE NAV */}
+        <div className="collection-navigation">
+          <div className="collection-nav">
+            <a href="#grades">Grades</a>
+            <a href="#boards">Boards</a>
+            <a href="#applications">Applications</a>
+            <a href="#brands">Brands</a>
+            <a href="#faqs">FAQs</a>
           </div>
         </div>
-      </section>
 
-      {/* =====================================================
-          NOTE
-          The "Your next space. Let's begin." CTA is intentionally
-          NOT included here. It is already rendered globally by
-          SiteLayout.
-          ===================================================== */}
+        {/* INTRO */}
+        <section className="collection-intro section">
+          <Reveal>
+            <Eyebrow>PLYWOOD IN KOLKATA</Eyebrow>
+
+            <div className="collection-intro-grid">
+              <h2>
+                Choose the material
+                <br />
+                around the project.
+              </h2>
+
+              <div>
+                <p>
+                  The right plywood depends on where it will be used, how much
+                  moisture it may encounter and the level of performance your
+                  project requires.
+                </p>
+
+                <p>
+                  At Balaji Ply & Lam, you can compare plywood grades and
+                  interior board options in one place and ask about current
+                  availability and pricing.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* GRADES */}
+        <section id="grades" className="compact-product-section section">
+          <Reveal>
+            <div className="section-heading-row">
+              <div>
+                <Eyebrow>Plywood grades</Eyebrow>
+                <h2>MR. BWR. BWP.</h2>
+              </div>
+
+              <p>
+                Different grades for different levels of moisture exposure and
+                interior use.
+              </p>
+            </div>
+
+            <div className="grade-list">
+              {gradeItems.map((grade) => (
+                <article className="grade-row" key={grade.id}>
+                  <div className="grade-image">
+                    <img
+                      src={grade.image}
+                      alt={`${grade.name} plywood`}
+                      onError={(event) => {
+                        event.currentTarget.src = grade.fallback;
+                      }}
+                    />
+                  </div>
+
+                  <div className="grade-number">{grade.number}</div>
+
+                  <div className="grade-main">
+                    <h3>{grade.name}</h3>
+                    <p>{grade.description}</p>
+                  </div>
+
+                  <div className="grade-application">
+                    <span>Typical use</span>
+                    <strong>{grade.applications}</strong>
+                  </div>
+
+                  <ArrowUpRight size={19} strokeWidth={1.2} />
+                </article>
+              ))}
+            </div>
+
+            <p className="section-note">
+              Grade selection should be based on the actual application,
+              moisture exposure and project requirements. Ask us for the
+              currently available options.
+            </p>
+          </Reveal>
+        </section>
+
+        {/* VISUAL STRIP */}
+        <section className="material-visual-strip section">
+          <Reveal>
+            <div className="material-visual-grid">
+              <div className="material-visual-card">
+                <img
+                  src="/images/plywood.jpg"
+                  alt="Plywood sheets for interior work"
+                />
+                <span>Plywood</span>
+              </div>
+
+              <div className="material-visual-card">
+                <img
+                  src="/images/material-palette.jpg"
+                  alt="Interior material palette"
+                />
+                <span>Boards & materials</span>
+              </div>
+
+              <div className="material-visual-card">
+                <img
+                  src="/images/laminates.jpg"
+                  alt="Decorative laminates for interiors"
+                />
+                <span>Finishing materials</span>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ENGINEERED BOARDS */}
+        <section id="boards" className="compact-material-section section">
+          <Reveal>
+            <div className="compact-material-grid">
+              <div className="compact-material-image">
+                <img
+                  src="/images/design-studio.jpg"
+                  alt="Engineered boards for interior applications"
+                />
+              </div>
+
+              <div className="compact-material-copy">
+                <Eyebrow>Beyond plywood</Eyebrow>
+
+                <h2>Engineered boards for modern interiors.</h2>
+
+                <p>
+                  Depending on the project, plywood may be only one part of the
+                  material selection. We also work with engineered boards and
+                  related interior materials.
+                </p>
+
+                <div className="board-list">
+                  <div className="board-list-row">
+                    <span>MDF</span>
+                    <small>
+                      Smooth board material for furniture and interior
+                      applications.
+                    </small>
+                  </div>
+
+                  <div className="board-list-row">
+                    <span>HDF / HDMR</span>
+                    <small>
+                      Higher-density board options for selected interior uses.
+                    </small>
+                  </div>
+
+                  <div className="board-list-row">
+                    <span>Decorative boards</span>
+                    <small>
+                      Surface-ready options for furniture and interior
+                      detailing.
+                    </small>
+                  </div>
+                </div>
+
+                <TextLink to="/products/">
+                  Explore all products
+                </TextLink>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* APPLICATIONS — INTERACTIVE */}
+        <section id="applications" className="applications-section section">
+          <Reveal>
+            <div className="applications-header">
+              <div>
+                <Eyebrow>For every space</Eyebrow>
+
+                <h2>
+                  One material.
+                  <br />
+                  Different possibilities.
+                </h2>
+              </div>
+
+              <p>
+                See how plywood and boards can fit into different kinds of
+                interior projects.
+              </p>
+            </div>
+
+            <div className="applications-layout">
+              {/* SINGLE IMAGE */}
+              <div className="application-feature-image">
+                <img
+                  src={selectedApplication.image}
+                  alt={selectedApplication.title}
+                />
+
+                <div className="application-image-caption">
+                  <span>A material choice for</span>
+                  <strong>{selectedApplication.title}</strong>
+                </div>
+              </div>
+
+              {/* SELECTORS */}
+              <div className="application-selector">
+                {applications.map((application) => {
+                  const isActive = application.id === activeApplication;
+
+                  return (
+                    <button
+                      type="button"
+                      className={`application-selector-row ${
+                        isActive ? 'is-active' : ''
+                      }`}
+                      key={application.id}
+                      onClick={() =>
+                        setActiveApplication(application.id)
+                      }
+                    >
+                      <span className="application-selector-number">
+                        {application.number}
+                      </span>
+
+                      <span className="application-selector-content">
+                        <span className="application-selector-title">
+                          {application.title}
+                        </span>
+
+                        {isActive && (
+                          <span className="application-selector-description">
+                            {application.description}
+                          </span>
+                        )}
+                      </span>
+
+                      <ArrowUpRight
+                        size={19}
+                        strokeWidth={1.2}
+                        className="application-selector-arrow"
+                      />
+                    </button>
+                  );
+                })}
+
+                <div className="application-selector-link">
+                  <Link to="/contact/">
+                    Discuss your project
+                    <ArrowUpRight size={17} strokeWidth={1.2} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* BRANDS */}
+        <section id="brands" className="plywood-brands-section section">
+          <Reveal>
+            <div className="section-heading-row">
+              <div>
+                <Eyebrow>Brands</Eyebrow>
+                <h2>Explore your options.</h2>
+              </div>
+
+              <p>
+                Ask us about current availability across plywood and related
+                interior-material brands.
+              </p>
+            </div>
+
+            <div className="brand-logo-grid">
+              {brandLogos.map((brand) => (
+                <Link
+                  to={brand.href}
+                  className="brand-logo-card"
+                  key={brand.name}
+                >
+                  <div className="brand-logo-image-wrap">
+                    <img
+                      src={brand.image}
+                      alt={`${brand.name} logo`}
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="brand-logo-footer">
+                    <span>{brand.name}</span>
+                    <ArrowUpRight size={17} strokeWidth={1.2} />
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="brands-bottom-link">
+              <TextLink to="/brands/">View all brands</TextLink>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* FAQ */}
+        <section id="faqs" className="faq-section section">
+          <Reveal>
+            <div className="faq-grid">
+              <div>
+                <Eyebrow>Common questions</Eyebrow>
+                <h2>Plywood buying questions, answered.</h2>
+
+                <p>
+                  Looking for plywood in Kolkata? These are some of the key
+                  questions to consider before choosing a grade.
+                </p>
+              </div>
+
+              <div className="faq-list">
+                <details>
+                  <summary>
+                    Which plywood is best for a kitchen?
+                    <span>+</span>
+                  </summary>
+                  <p>
+                    Kitchen plywood should be selected based on moisture
+                    exposure, construction requirements and the specific
+                    application. BWR or BWP options may be considered where
+                    greater moisture resistance is required.
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    What is the difference between MR, BWR and BWP plywood?
+                    <span>+</span>
+                  </summary>
+                  <p>
+                    MR, BWR and BWP indicate different levels of moisture
+                    resistance. The appropriate grade depends on where the
+                    plywood will be used and the conditions it will encounter.
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    What is the plywood price in Kolkata?
+                    <span>+</span>
+                  </summary>
+                  <p>
+                    Plywood prices in Kolkata vary according to grade,
+                    thickness, size, brand and product specification. Contact
+                    us for current availability and pricing.
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    Where can I buy plywood in Kolkata?
+                    <span>+</span>
+                  </summary>
+                  <p>
+                    Balaji Ply & Lam is located at 63/1/1A Sarat Bose Road,
+                    Bhowanipore, Kolkata. You can visit the store or contact us
+                    on WhatsApp to ask about available plywood options.
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    Do you have CenturyPly in Kolkata?
+                    <span>+</span>
+                  </summary>
+                  <p>
+                    Ask us about currently available CenturyPly products,
+                    grades and specifications in Kolkata.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+      </main>
     </>
   );
 }
