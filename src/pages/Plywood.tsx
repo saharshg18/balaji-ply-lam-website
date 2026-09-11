@@ -58,13 +58,13 @@ const applications = [
     number: '01',
     title: 'Kitchen',
     description:
-      'Consider moisture exposure and the construction of the kitchen before selecting a plywood grade.',
+      'Consider moisture exposure, construction and the plywood specification required for the kitchen.',
   },
   {
     number: '02',
     title: 'Wardrobe',
     description:
-      'For indoor wardrobes, consider the room environment, thickness, construction and expected load.',
+      'Consider the room environment, thickness, construction and expected load when choosing plywood.',
   },
   {
     number: '03',
@@ -85,11 +85,11 @@ const faqs = [
     question:
       'What is the best plywood for a kitchen in Kolkata?',
     answer:
-      'The best plywood for a kitchen depends on the level of moisture exposure, construction, thickness and project requirements. Moisture-resistant BWR or BWP options may be considered where moisture is an important factor. The exact specification should be confirmed for the application.',
+      'The best plywood for a kitchen depends on moisture exposure, construction, thickness and the requirements of the project. Moisture-resistant BWR or BWP options may be considered where moisture is an important factor. The exact specification should be confirmed for the application.',
   },
   {
     question:
-      'How do I choose between MR, BWR and BWP plywood?',
+      'How do I choose between MR, BWR and BWP plywood in Kolkata?',
     answer:
       'MR, BWR and BWP plywood are suited to different moisture-exposure requirements. MR can be suitable for many dry interior applications, while BWR and BWP can be considered where greater moisture resistance is required.',
   },
@@ -103,7 +103,7 @@ const faqs = [
     question:
       'How can I find a plywood shop near me in Kolkata?',
     answer:
-      'If you are looking for a plywood shop near you in Kolkata, consider the location, available brands, product range and whether the store can help you compare specifications. Balaji Ply & Lam is located on Sarat Bose Road in Bhowanipore.',
+      'When looking for a plywood shop near you in Kolkata, consider the location, available brands, product range and whether the store can help you compare specifications. Balaji Ply & Lam is located on Sarat Bose Road in Bhowanipore.',
   },
   {
     question:
@@ -115,7 +115,7 @@ const faqs = [
     question:
       'Which plywood is suitable for wardrobes and furniture?',
     answer:
-      'The suitable plywood depends on the room environment, furniture construction, required thickness, expected load and budget. For indoor furniture and wardrobes, the appropriate specification should be selected according to the particular application.',
+      'The suitable plywood depends on the room environment, furniture construction, required thickness, expected load and budget. For indoor furniture and wardrobes, choose the specification according to the particular application.',
   },
 ];
 
@@ -124,7 +124,9 @@ export function PlywoodPage() {
     <>
       <SEO page="plywood" />
 
-      {/* HERO */}
+      {/* =====================================================
+          HERO
+          ===================================================== */}
       <InnerHero
         image="/images/plywood.jpg"
         alt="Plywood sheets and wood-based interior materials"
@@ -159,6 +161,7 @@ export function PlywoodPage() {
             className="text-link light-link"
           >
             <span>Explore plywood grades</span>
+
             <ArrowDown
               size={17}
               strokeWidth={1.5}
@@ -168,21 +171,39 @@ export function PlywoodPage() {
         </div>
       </InnerHero>
 
-      {/* PAGE NAVIGATION */}
+      {/* =====================================================
+          PAGE NAVIGATION
+          ===================================================== */}
       <div className="collection-navigation">
         <nav
           className="container collection-nav"
           aria-label="Plywood page sections"
         >
-          <a href="#plywood-grades">Plywood Grades</a>
-          <a href="#boards">Engineered Boards</a>
-          <a href="#applications">Applications</a>
-          <a href="#brands">Brands</a>
-          <a href="#plywood-faq">FAQs</a>
+          <a href="#plywood-grades">
+            Plywood Grades
+          </a>
+
+          <a href="#boards">
+            Engineered Boards
+          </a>
+
+          <a href="#applications">
+            Applications
+          </a>
+
+          <a href="#brands">
+            Brands
+          </a>
+
+          <a href="#plywood-faq">
+            FAQs
+          </a>
         </nav>
       </div>
 
-      {/* INTRO */}
+      {/* =====================================================
+          INTRODUCTION
+          ===================================================== */}
       <div className="collection-intro container">
         <p>
           The right plywood depends on
@@ -193,11 +214,13 @@ export function PlywoodPage() {
         <span>
           MR / BWR / BWP plywood · MDF · HDF / HDMR
           <br />
-          Current availability and specifications can vary.
+          Compare materials based on application and requirements.
         </span>
       </div>
 
-      {/* PLYWOOD GRADES */}
+      {/* =====================================================
+          PLYWOOD GRADES
+          ===================================================== */}
       <section
         id="plywood-grades"
         className="section compact-product-section"
@@ -246,6 +269,7 @@ export function PlywoodPage() {
 
                 <div className="grade-application">
                   <span>Common applications</span>
+
                   <p>{grade.applications}</p>
                 </div>
 
@@ -265,13 +289,15 @@ export function PlywoodPage() {
             <p>
               Product specifications, certifications, thicknesses
               and current availability can vary by brand. Confirm
-              the exact product specification before purchasing.
+              the exact specification before purchasing.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ENGINEERED BOARDS */}
+      {/* =====================================================
+          ENGINEERED BOARDS
+          ===================================================== */}
       <section
         id="boards"
         className="section compact-material-section"
@@ -308,8 +334,8 @@ export function PlywoodPage() {
             <p className="product-description">
               Plywood is not the only board material used in
               interior work. MDF and HDF / HDMR can be suitable
-              alternatives for selected furniture and interior
-              applications.
+              options for selected furniture, decorative and
+              interior applications.
             </p>
 
             <div className="board-list">
@@ -322,6 +348,7 @@ export function PlywoodPage() {
 
                   <div>
                     <h3>{board.name}</h3>
+
                     <p>{board.description}</p>
                   </div>
 
@@ -341,7 +368,9 @@ export function PlywoodPage() {
         </div>
       </section>
 
-      {/* APPLICATIONS */}
+      {/* =====================================================
+          APPLICATIONS
+          ===================================================== */}
       <section
         id="applications"
         className="section applications-section"
@@ -399,7 +428,9 @@ export function PlywoodPage() {
         </div>
       </section>
 
-      {/* BRANDS */}
+      {/* =====================================================
+          BRANDS
+          ===================================================== */}
       <section
         id="brands"
         className="section"
@@ -458,7 +489,9 @@ export function PlywoodPage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* =====================================================
+          FAQ
+          ===================================================== */}
       <section
         id="plywood-faq"
         className="section faq-section"
@@ -475,8 +508,8 @@ export function PlywoodPage() {
             </h2>
 
             <p className="faq-intro">
-              Looking for a plywood shop, comparing grades or
-              checking current pricing? Start here.
+              Comparing plywood grades, looking for a plywood
+              shop near you or checking current pricing?
             </p>
 
             <ContactLink
@@ -515,66 +548,12 @@ export function PlywoodPage() {
         </div>
       </section>
 
-      {/* GLOBAL CTA */}
-      <section
-        className="professionals-section"
-        aria-labelledby="plywood-cta-title"
-      >
-        <div className="professionals-copy">
-          <Reveal>
-            <Eyebrow>Your next space</Eyebrow>
-
-            <h2 id="plywood-cta-title">
-              Let&apos;s
-              <br />
-              <em>begin.</em>
-            </h2>
-
-            <p>
-              Looking for plywood, boards or other interior
-              materials in Kolkata? Visit Balaji Ply &amp; Lam in
-              Bhowanipore or contact us for the latest catalogue
-              and availability.
-            </p>
-
-            <div className="button-group">
-              <ContactLink
-                kind="whatsapp"
-                message={messages.plywood}
-                variant="light"
-              >
-                Get Plywood Catalogue
-              </ContactLink>
-
-              <ContactLink
-                kind="call"
-                variant="outline-light"
-              />
-            </div>
-          </Reveal>
-        </div>
-
-        <div className="professionals-image">
-          <img
-            src="/images/plywood.jpg"
-            alt="Plywood sheets for interior and furniture applications"
-            width="1200"
-            height="900"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </section>
-
-      {/* FOOTNOTE */}
-      <div className="collection-footnote container">
-        <p>
-          Material imagery is illustrative. Colours, textures,
-          specifications and stock can vary by product and brand.
-          Contact Balaji Ply &amp; Lam in Bhowanipore, Kolkata for
-          current availability.
-        </p>
-      </div>
+      {/* =====================================================
+          NOTE
+          The "Your next space. Let's begin." CTA is intentionally
+          NOT included here. It is already rendered globally by
+          SiteLayout.
+          ===================================================== */}
     </>
   );
 }
