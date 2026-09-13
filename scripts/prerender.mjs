@@ -22,26 +22,72 @@ const routes = [
   "/about-us",
 ];
 
-function injectRoute(templateHtml, renderedHtml, helmet) {
-  let html = templateHtml.replace(
-    '<div id="root"></div>',
-    `<div id="root">${renderedHtml}</div>`
-  );
+function extractHeadTags(html) {
+  const headTags = [];
+  let bodyHtml = html;
 
-  const helmetHead = [
-    helmet.title?.toString?.() || "",
-    helmet.meta?.toString?.() || "",
-    helmet.link?.toString?.() || "",
-    helmet.script?.toString?.() || "",
-  ].join("\n");
+  const patterns = [
+    /<title\b[^>]*>[\s\S]*?<\/title>/gi,
+    /<meta\b[^>]*\/?>/gi,
+    /<link\b[^>]*\/?>/gi,
+    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,
+  ];
 
-  html = html.replace("</head>", `${helmetHead}\n</head>`);
+  for (const pattern of patterns) {
+    const matches = bodyHtml.match(pattern) || [];
 
-  return html;
+    for (const match of matches) {
+      headTags.push(match);
+      bodyHtml = bodyHtml.replace(match, "");
+    }
+  }
+
+  return {
+    head: headTags.join("\n"),
+    body: bodyHtml,
+  };
+}
+
+function cleanTemplateHead(html) {
+  return html
+    .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, "")
+    .replace(
+      /<meta\s+name=["']description["'][^>]*\/?>/gi,
+      ""
+    )
+    .replace(
+      /<link\s+rel=["']canonical["'][^>]*\/?>/gi,
+      ""
+    )
+    .replace(
+      /<meta\s+property=["']og:[^"']+["'][^>]*\/?>/gi,
+      ""
+    )
+    .replace(
+      /<meta\s+name=["']twitter:[^"']+["'][^>]*\/?>/gi,
+      ""
+    )
+    .replace(
+      /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,
+      ""
+    );
 }
 
 for (const route of routes) {
-  const result = render(route);
+  const rendered = render(route);
+  const extracted = extractHeadTags(rendered.html);
+
+  const cleanedTemplate = cleanTemplateHead(template);
+
+  const finalHtml = cleanedTemplate
+    .replace(
+      "</head>",
+      `${extracted.head}\n</head>`
+    )
+    .replace(
+      '<div id="root"></div>',
+      `<div id="root">${extracted.body}</div>`
+    );
 
   const outputPath =
     route === "/"
@@ -49,12 +95,6 @@ for (const route of routes) {
       : path.join(distDir, route.slice(1), "index.html");
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-
-  const finalHtml = injectRoute(
-    template,
-    result.html,
-    result.helmet
-  );
 
   fs.writeFileSync(outputPath, finalHtml, "utf8");
 
