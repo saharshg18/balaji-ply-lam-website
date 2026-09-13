@@ -93,6 +93,11 @@ main:focus { outline: none; }
 .header-inner { display: flex; align-items: center; gap: 34px; width: min(calc(100% - var(--gutter) * 2), 1440px); height: 100%; margin-inline: auto; }
 .brand-logo { display: inline-flex; align-items: center; flex-shrink: 0; width: fit-content; }
 .brand-mark { width: 48px; height: 48px; display: block; object-fit: contain; }
+.brand-logo { gap: 10px; }
+
+.brand-wordmark { display: flex; align-items: baseline; color: #383c30; }
+.brand-wordmark > span:first-child { font-size: 20px; line-height: 1; font-weight: 500; letter-spacing: 1.2px; }
+.brand-wordmark > span:last-child { font-size: 20px; line-height: 1; font-weight: 500; letter-spacing: 1px; margin-left: 7px; }
 .desktop-nav { display: flex; align-items: center; gap: 32px; margin-left: auto; }
 .desktop-nav a { position: relative; padding-block: 17px; font-size: 12px; white-space: nowrap; color: #6d6f63; transition: color .2s ease; }
 .desktop-nav a::after { content: ''; position: absolute; left: 0; bottom: 8px; width: 100%; height: 1px; background: #7f6d4b; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
