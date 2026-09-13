@@ -116,10 +116,24 @@ function Footer() {
           <div className="footer-brand"><Logo /><p>Considered materials.<br />Beautiful possibilities.</p><span>Plywood, laminates &amp; interior materials in Kolkata.</span></div>
           <div className="footer-nav"><h2>Explore</h2><nav aria-label="Footer navigation">{navigation.map((item) => <Link key={item.to} to={item.to}>{item.label}</Link>)}</nav></div>
           <div className="footer-visit"><h2>Find us in Kolkata</h2><address>{business.street}<br />Bhowanipore, Kolkata<br />West Bengal - 700025</address><a className="text-link" href={directionsUrl} target="_blank" rel="noopener noreferrer">Get Directions<ArrowUpRight size={16} strokeWidth={1.5} /></a></div>
-          <div className="footer-contact"><h2>Let's connect</h2><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a><a href={`mailto:${business.email}`}>{business.email}</a><a className="text-link" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">Chat on WhatsApp<ArrowUpRight size={16} strokeWidth={1.5} /></a></div>
-        </div>
-        <div className="footer-bottom"><p>&copy; {new Date().getFullYear()} Balaji Ply &amp; Lam. All rights reserved.</p><p>Rooted in Kolkata. Inspired by good design.</p></div>
-      </div>
+         <div className="footer-contact">
+  <h2>Let's connect</h2>
+  <a href={`tel:${business.phone}`}>{business.phoneDisplay}</a>
+  <a href={`mailto:${business.email}`}>{business.email}</a>
+  <a className="text-link" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+    Chat on WhatsApp
+    <ArrowUpRight size={16} strokeWidth={1.5} />
+  </a>
+  <div className="footer-socials">
+    <a href="https://www.instagram.com/balajiplyandlam/" target="_blank" rel="noopener noreferrer">
+      Instagram
+    </a>
+    <span aria-hidden="true">|</span>
+    <a href="https://www.facebook.com/profile.php?id=61594232675250" target="_blank" rel="noopener noreferrer">
+      Facebook
+    </a>
+  </div>
+</div>
     </footer>
   );
 }
