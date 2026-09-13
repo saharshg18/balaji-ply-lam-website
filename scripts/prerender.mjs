@@ -24,14 +24,21 @@ const routes = [
 
 function extractMetadata(html) {
   const metadata = [];
+  let body = html;
 
-  const metadataPattern =
-    /<(title|meta|link|script)\b[\s\S]*?(?:<\/title>|<\/script>|\/?>)/gi;
+  const patterns = [
+    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,
+    /<title\b[^>]*>[\s\S]*?<\/title>/gi,
+    /<meta\b[^>]*(?:name=["']description["']|name=["']robots["']|property=["']og:[^"']+["']|name=["']twitter:[^"']+["'])[^>]*\/?>/gi,
+    /<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi,
+  ];
 
-  const body = html.replace(metadataPattern, (match) => {
-    metadata.push(match);
-    return "";
-  });
+  for (const pattern of patterns) {
+    body = body.replace(pattern, (match) => {
+      metadata.push(match);
+      return "";
+    });
+  }
 
   return {
     metadata: metadata.join("\n"),
@@ -55,9 +62,7 @@ function cleanHead(html) {
 
 for (const route of routes) {
   const rendered = render(route);
-
   const extracted = extractMetadata(rendered.html);
-
   const cleanedTemplate = cleanHead(template);
 
   const finalHtml = cleanedTemplate
