@@ -36,6 +36,10 @@ export function Logo({ light = false, onClick }: { light?: boolean; onClick?: ()
         alt=""
         className="brand-mark"
       />
+      <span className="brand-wordmark">
+        <span>BALAJI</span>
+        <span>PLY &amp; LAM</span>
+      </span>
     </Link>
   );
 }
