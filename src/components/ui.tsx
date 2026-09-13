@@ -25,9 +25,17 @@ export function BrandMark(props: SVGProps<SVGSVGElement>) {
 
 export function Logo({ light = false, onClick }: { light?: boolean; onClick?: () => void }) {
   return (
-    <Link to="/" className={`brand-logo${light ? ' brand-logo-light' : ''}`} aria-label="Balaji Ply & Lam home" onClick={onClick}>
-      <BrandMark className="brand-mark" />
-      <span className="brand-wordmark"><span>BALAJI</span><span>PLY &amp; LAM</span></span>
+    <Link
+      to="/"
+      className={`brand-logo${light ? ' brand-logo-light' : ''}`}
+      aria-label="Balaji Ply & Lam home"
+      onClick={onClick}
+    >
+      <img
+        src="/favicon.svg"
+        alt=""
+        className="brand-mark"
+      />
     </Link>
   );
 }
