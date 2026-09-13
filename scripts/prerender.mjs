@@ -22,51 +22,31 @@ const routes = [
   "/about-us",
 ];
 
-function extractHeadTags(html) {
-  const headTags = [];
-  let bodyHtml = html;
+function extractMetadata(html) {
+  const metadata = [];
 
-  const patterns = [
-    /<title\b[^>]*>[\s\S]*?<\/title>/gi,
-    /<meta\b[^>]*\/?>/gi,
-    /<link\b[^>]*\/?>/gi,
-    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,
-  ];
+  const metadataPattern =
+    /<(title|meta|link|script)\b[\s\S]*?(?:<\/title>|<\/script>|\/?>)/gi;
 
-  for (const pattern of patterns) {
-    const matches = bodyHtml.match(pattern) || [];
-
-    for (const match of matches) {
-      headTags.push(match);
-      bodyHtml = bodyHtml.replace(match, "");
-    }
-  }
+  const body = html.replace(metadataPattern, (match) => {
+    metadata.push(match);
+    return "";
+  });
 
   return {
-    head: headTags.join("\n"),
-    body: bodyHtml,
+    metadata: metadata.join("\n"),
+    body,
   };
 }
 
-function cleanTemplateHead(html) {
+function cleanHead(html) {
   return html
-    .replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, "")
-    .replace(
-      /<meta\s+name=["']description["'][^>]*\/?>/gi,
-      ""
-    )
-    .replace(
-      /<link\s+rel=["']canonical["'][^>]*\/?>/gi,
-      ""
-    )
-    .replace(
-      /<meta\s+property=["']og:[^"']+["'][^>]*\/?>/gi,
-      ""
-    )
-    .replace(
-      /<meta\s+name=["']twitter:[^"']+["'][^>]*\/?>/gi,
-      ""
-    )
+    .replace(/<title\b[\s\S]*?<\/title>/gi, "")
+    .replace(/<meta\b[^>]*name=["']description["'][^>]*\/?>/gi, "")
+    .replace(/<meta\b[^>]*name=["']robots["'][^>]*\/?>/gi, "")
+    .replace(/<link\b[^>]*rel=["']canonical["'][^>]*\/?>/gi, "")
+    .replace(/<meta\b[^>]*property=["']og:[^"']+["'][^>]*\/?>/gi, "")
+    .replace(/<meta\b[^>]*name=["']twitter:[^"']+["'][^>]*\/?>/gi, "")
     .replace(
       /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi,
       ""
@@ -75,14 +55,15 @@ function cleanTemplateHead(html) {
 
 for (const route of routes) {
   const rendered = render(route);
-  const extracted = extractHeadTags(rendered.html);
 
-  const cleanedTemplate = cleanTemplateHead(template);
+  const extracted = extractMetadata(rendered.html);
+
+  const cleanedTemplate = cleanHead(template);
 
   const finalHtml = cleanedTemplate
     .replace(
       "</head>",
-      `${extracted.head}\n</head>`
+      `${extracted.metadata}\n</head>`
     )
     .replace(
       '<div id="root"></div>',
@@ -94,9 +75,17 @@ for (const route of routes) {
       ? path.join(distDir, "index.html")
       : path.join(distDir, route.slice(1), "index.html");
 
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.mkdirSync(path.dirname(outputPath), {
+    recursive: true,
+  });
 
-  fs.writeFileSync(outputPath, finalHtml, "utf8");
+  fs.writeFileSync(
+    outputPath,
+    finalHtml,
+    "utf8"
+  );
 
-  console.log(`Pre-rendered ${route} → ${outputPath}`);
+  console.log(
+    `Pre-rendered ${route} → ${outputPath}`
+  );
 }
