@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { hydrateRoot, createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import "@fontsource/cormorant-garamond/latin-500.css";
 import "@fontsource/cormorant-garamond/latin-500-italic.css";
@@ -9,10 +9,18 @@ import "@fontsource/dm-sans/latin-600.css";
 import "./index.css";
 import App from "./App";
 
-createRoot(document.getElementById("root")!).render(
+const app = (
   <HelmetProvider>
     <StrictMode>
       <App />
     </StrictMode>
   </HelmetProvider>
 );
+
+const root = document.getElementById("root")!;
+
+if (root.hasChildNodes()) {
+  hydrateRoot(root, app);
+} else {
+  createRoot(root).render(app);
+}
