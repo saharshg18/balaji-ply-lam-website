@@ -53,7 +53,7 @@ export const materials: Material[] = [
     shortDescription: 'A dependable foundation for furniture, cabinetry and beautifully built spaces.',
     eyebrow: 'A strong beginning',
     description: 'Made from layers of wood veneer bonded together, plywood brings strength and stability to furniture and interior construction. Explore a suitable grade and thickness for your project, from everyday wardrobes to cabinetry in moisture-prone areas.',
-    characteristics: ['Commercial / MR plywood', 'BWR-grade plywood', 'Marine / BWP plywood', 'Application-specific thicknesses'],
+    characteristics: ['Authorised CenturyPly, Greenply, Austin & Sylvan dealer', 'Commercial / MR plywood', 'BWR-grade plywood', 'Marine / BWP plywood', 'Application-specific thicknesses'],
     applications: 'Furniture, cabinets, wardrobes, kitchens and interior construction.',
     note: 'MR, BWR and marine/BWP grades offer different levels of moisture resistance. Ask us to confirm the specification, certification and current availability for your application.',
     cta: 'Ask Us About Plywood',
@@ -68,7 +68,7 @@ export const materials: Material[] = [
     shortDescription: 'Colours, grains and tactile finishes that give your interiors their character.',
     eyebrow: 'A finish that feels like you',
     description: 'Decorative laminates are surface sheets applied over a suitable base to create a finished look. From the warmth of woodgrain to understated solid colours, explore finishes that bring furniture and interior surfaces into harmony.',
-    characteristics: ['Natural-looking woodgrains', 'Solid colours and decorative designs', 'Matte and glossy finishes', 'Tactile surface textures'],
+    characteristics: ['Century, Greenlam, Merino & Royale Touche brands', 'Natural-looking woodgrains', 'Solid colours and decorative designs', 'Matte and glossy finishes', 'Tactile surface textures'],
     applications: 'Wardrobes, kitchen cabinets, furniture, shelving and interior surfaces.',
     cta: 'Explore Laminates on WhatsApp',
     message: 'Hi, I am interested in your laminate collection. Please share more details.',
@@ -189,6 +189,14 @@ export const faqs = [
   {
     question: 'Where is your plywood shop and dealer located in Kolkata?',
     answer: 'Balaji Ply & Lam is located at 63/1/1A, Sarat Bose Road, Bhowanipore, Kolkata, West Bengal 700025. Our plywood shop is conveniently located for customers across Kolkata, particularly Bhowanipore and South Kolkata. Call or WhatsApp us before visiting for product enquiries and current availability.',
+  },
+  {
+    question: 'Are you a Century Ply dealer in Kolkata?',
+    answer: 'Yes. Balaji Ply & Lam is an authorised Century Ply and Century laminate dealer in Bhowanipore, Kolkata, alongside Greenply, Austin and Sylvan plywood and Greenlam, Merino and Royale Touche laminates. Contact us to confirm current Century Ply grades, sizes and availability for your project.',
+  },
+  {
+    question: 'Do you offer wholesale or bulk plywood pricing in Kolkata?',
+    answer: 'Yes. Alongside regular retail pricing, Balaji Ply & Lam offers wholesale and bulk pricing for contractors and trade buyers in Kolkata. Share your project scale and material requirements with us on WhatsApp or by phone to discuss plywood and laminate pricing suited to your order.',
   },
 ];
 

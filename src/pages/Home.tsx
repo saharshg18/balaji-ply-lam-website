@@ -169,7 +169,7 @@ const reasons = [
   },
   {
     title: 'Considered options. Fair value.',
-    text: 'Explore materials across different styles and price points to find the right plywood, laminates and interior finishes for your space.'
+    text: 'Explore materials across different styles and price points, with wholesale and bulk pricing available for contractors and trade buyers, to find the right plywood, laminates and interior finishes for your space.'
   },
 ];
 
