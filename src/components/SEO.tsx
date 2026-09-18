@@ -8,7 +8,7 @@ const pageMetadata = {
     path: '/',
     title: 'Best Plywood Shop in Kolkata | Balaji Ply & Lam',
     description:
-      'Balaji Ply & Lam is a trusted plywood shop in Kolkata offering quality plywood, laminates, louvers and interior materials from our Bhowanipore showroom.',
+  'Balaji Ply & Lam is a plywood and laminate shop in Bhowanipore, Kolkata, offering plywood, laminates, louvers and interior materials from trusted brands including CenturyPly and Greenply for residential and commercial projects.',
     name: 'Home',
     image: '/images/hero-interior.jpg',
   },
