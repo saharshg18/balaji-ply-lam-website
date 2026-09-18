@@ -42,7 +42,7 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
       name: business.name,
       url: `${siteUrl}/`,
       description:
-        'Plywood, laminates and decorative interior materials for homeowners and design professionals in Bhowanipore, Kolkata.',
+  'Balaji Ply & Lam is a plywood and laminate shop in Bhowanipore, Kolkata, offering plywood, laminates, louvers and interior materials from trusted brands including CenturyPly and Greenply for residential and commercial projects.',
       telephone: business.phone,
       email: business.email,
       logo: `${siteUrl}/favicon.svg`,
