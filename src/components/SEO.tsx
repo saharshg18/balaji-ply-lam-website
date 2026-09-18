@@ -56,10 +56,14 @@ export function SEO({ page }: { page: keyof typeof pageMetadata }) {
         addressCountry: 'IN',
       },
       areaServed: {
-        '@type': 'City',
-        name: 'Kolkata',
-      },
-      hasMap: googleMapsUrl,
+  '@type': 'City',
+  name: 'Kolkata',
+},
+hasMap: googleMapsUrl,
+sameAs: [
+  'https://www.instagram.com/balajiplyandlam/',
+  'https://www.facebook.com/profile.php?id=61594232675250',
+],
     },
     {
       '@type': 'WebSite',
